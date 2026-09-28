@@ -5,6 +5,7 @@ use num_dual::DualDVec64;
 
 pub mod se3;
 pub mod so3;
+pub mod sphere;
 
 pub trait AutoDiffManifold<T: na::RealField> {
     fn plus(&self, x: na::DVectorView<T>, delta: na::DVectorView<T>) -> na::DVector<T>;

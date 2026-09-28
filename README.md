@@ -24,7 +24,7 @@ cargo add tiny-solver
 - [x] LevenbergMarquardtOptimizer
 - [x] Multithreading jacobian
 - [x] loss functions (Huber, CauchyLoss, ArctanLoss)
-- [x] Parameter on manifold (SO3, SE3)
+- [x] Parameter on manifold (SO3, SE3, Sphere)
 
 #### TODO
 - [ ] information matrix
