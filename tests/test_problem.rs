@@ -4,6 +4,7 @@ mod tests {
 
     use nalgebra as na;
     use tiny_solver;
+    use tiny_solver::Optimizer;
 
     #[test]
     fn new_problem() {
@@ -61,6 +62,53 @@ mod tests {
         block = problem.remove_residual_block(block_id);
         assert!(block.is_none());
         assert_eq!(problem.total_residual_dimension, 0);
+    }
+
+    #[test]
+    fn remove_residual_block_keeps_remaining_rows_consistent() {
+        let prior = |v: f64| Box::new(tiny_solver::factors::PriorFactor { v: na::dvector![v] });
+        let mut problem = tiny_solver::Problem::new();
+        problem.add_residual_block(1, &["x"], prior(1.0), None);
+        let middle = problem.add_residual_block(1, &["x"], prior(2.0), None);
+        problem.add_residual_block(1, &["x"], prior(4.0), None);
+
+        problem.remove_residual_block(middle);
+
+        let initial_values = HashMap::from([("x".to_string(), na::dvector![0.0])]);
+        let parameter_blocks = problem.initialize_parameter_blocks(&initial_values);
+        let residuals = problem.compute_residuals(&parameter_blocks, false);
+        assert_eq!(residuals.nrows(), 2);
+        assert_eq!(residuals[(0, 0)], -1.0);
+        assert_eq!(residuals[(1, 0)], -4.0);
+    }
+
+    #[test]
+    fn remove_first_residual_block_then_optimize() {
+        let mut problem = tiny_solver::Problem::new();
+        let first = problem.add_residual_block(
+            1,
+            &["x"],
+            Box::new(tiny_solver::factors::PriorFactor {
+                v: na::dvector![1.0],
+            }),
+            None,
+        );
+        problem.add_residual_block(
+            1,
+            &["x"],
+            Box::new(tiny_solver::factors::PriorFactor {
+                v: na::dvector![2.0],
+            }),
+            None,
+        );
+
+        problem.remove_residual_block(first);
+
+        let initial_values = HashMap::from([("x".to_string(), na::dvector![0.0])]);
+        let result = tiny_solver::GaussNewtonOptimizer::default()
+            .optimize(&problem, &initial_values, None)
+            .unwrap();
+        assert!((result["x"][0] - 2.0).abs() < 1e-9);
     }
 
     #[test]
