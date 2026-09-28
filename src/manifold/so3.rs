@@ -53,10 +53,12 @@ impl<T: na::RealField> SO3<T> {
             xyzw.z = xi[2].clone() * tmp;
         } else {
             let theta = theta2.sqrt();
-            xyzw.w = (theta.clone() * T::from_f64(0.5).unwrap()).cos();
+            let half_theta = theta.clone() * T::from_f64(0.5).unwrap();
+            xyzw.w = half_theta.clone().cos();
 
             let omega = xi / theta;
-            let sin_theta_half = (T::one() - xyzw.w.clone() * xyzw.w.clone()).sqrt();
+            // Not sqrt(1 - w^2): that drops the sign of sin(theta / 2) for theta > 2*pi.
+            let sin_theta_half = half_theta.sin();
             xyzw.x = omega[0].clone() * sin_theta_half.clone();
             xyzw.y = omega[1].clone() * sin_theta_half.clone();
             xyzw.z = omega[2].clone() * sin_theta_half;
