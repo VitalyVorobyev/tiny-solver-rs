@@ -4,6 +4,7 @@ use nalgebra as na;
 
 use super::{AutoDiffManifold, Manifold};
 
+/// A rotation stored as a unit quaternion, laid out as `[qx, qy, qz, qw]`.
 pub struct SO3<T: na::RealField> {
     qx: T,
     qy: T,
@@ -38,6 +39,7 @@ impl<T: na::RealField> SO3<T> {
         }
     }
 
+    /// Rotation by `|xi|` radians about `xi / |xi|` (rotation vector to quaternion).
     pub fn exp(xi: na::DVectorView<T>) -> Self {
         let mut xyzw = na::Vector4::zeros();
 
@@ -65,6 +67,7 @@ impl<T: na::RealField> SO3<T> {
         SO3::from_vec(xyzw.as_view())
     }
 
+    /// Inverse of [`SO3::exp`]: the rotation vector of this rotation.
     pub fn log(&self) -> na::DVector<T> {
         const EPS: f64 = 1e-6;
         let ivec = na::dvector![self.qx.clone(), self.qy.clone(), self.qz.clone()];
@@ -182,6 +185,11 @@ impl<T: na::RealField> Mul<na::VectorView3<'_, T>> for &SO3<T> {
     }
 }
 
+/// Manifold for unit quaternions stored as `[qx, qy, qz, qw]`, with tangent
+/// `δ = [ωx, ωy, ωz]`.
+///
+/// `q ⊞ δ = q * SO3::exp(δ)`, i.e. the rotation is perturbed in the local
+/// frame. `minus` is its inverse.
 #[derive(Debug, Clone)]
 pub struct QuaternionManifold;
 impl<T: na::RealField> AutoDiffManifold<T> for QuaternionManifold {

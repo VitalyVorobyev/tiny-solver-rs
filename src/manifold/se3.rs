@@ -4,6 +4,10 @@ use nalgebra as na;
 
 use super::{AutoDiffManifold, Manifold, so3::SO3};
 
+/// A rigid transform: a unit-quaternion rotation and a translation.
+///
+/// As a vector (see [`SE3::from_vec`] and [`SE3::to_dvec`]) it is laid out
+/// as `[qx, qy, qz, qw, tx, ty, tz]`.
 pub struct SE3<T: na::RealField> {
     pub xyz: na::Vector3<T>,
     pub rot: SO3<T>,
@@ -36,13 +40,17 @@ impl<T: na::RealField> SE3<T> {
         SE3 { xyz, rot }
     }
 
+    /// Maps `xi = [ωx, ωy, ωz, ρx, ρy, ρz]` to the transform `(exp(ω), ρ)`.
+    ///
+    /// This is the exponential of SO(3) x R^3, not of SE(3): the translation
+    /// is taken as is and not coupled to the rotation.
     pub fn exp(xi: na::DVectorView<T>) -> Self {
-        // fake exp
         let rot = SO3::<T>::exp(xi.rows(0, 3).as_view());
         let xyz = na::Vector3::new(xi[3].clone(), xi[4].clone(), xi[5].clone());
         SE3 { xyz, rot }
     }
 
+    /// Inverse of [`SE3::exp`]: returns `[log(R), t]`.
     pub fn log(&self) -> na::DVector<T> {
         let mut xi = na::DVector::zeros(6);
         let xi_theta = self.rot.log();
@@ -135,6 +143,12 @@ impl<T: na::RealField> Mul<na::VectorView3<'_, T>> for &SE3<T> {
     }
 }
 
+/// Manifold for poses stored as `[qx, qy, qz, qw, tx, ty, tz]`, with tangent
+/// `δ = [ωx, ωy, ωz, ρx, ρy, ρz]`.
+///
+/// `x ⊞ δ = x * SE3::exp(δ)`, i.e. the perturbation is applied in the local
+/// (body) frame: `R' = R * exp(ω)` and `t' = t + R * ρ`. `minus` is its
+/// inverse.
 #[derive(Debug, Clone)]
 pub struct SE3Manifold;
 impl<T: na::RealField> AutoDiffManifold<T> for SE3Manifold {
