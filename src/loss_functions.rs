@@ -31,7 +31,7 @@ impl Loss for HuberLoss {
             // Outlier region.
             // 'r' is always positive.
             let r = s.sqrt();
-            let rho1 = (self.scale / r).max(f64::MIN);
+            let rho1 = (self.scale / r).max(f64::MIN_POSITIVE);
             [2.0 * self.scale * r - self.scale2, rho1, -rho1 / (2.0 * s)]
         } else {
             // Inlier region.
@@ -46,6 +46,9 @@ pub struct CauchyLoss {
 }
 impl CauchyLoss {
     pub fn new(scale: f64) -> Self {
+        if scale <= 0.0 {
+            panic!("scale needs to be larger than zero");
+        }
         let scale2 = scale * scale;
         CauchyLoss {
             scale2,
@@ -59,8 +62,8 @@ impl Loss for CauchyLoss {
         let inv = 1.0 / sum;
         // 'sum' and 'inv' are always positive, assuming that 's' is.
         [
-            self.scale2 * sum.log2(),
-            inv.max(f64::MIN),
+            self.scale2 * sum.ln(),
+            inv.max(f64::MIN_POSITIVE),
             -self.c * (inv * inv),
         ]
     }
@@ -90,7 +93,7 @@ impl Loss for ArctanLoss {
 
         [
             self.tolerance * s.atan2(self.tolerance),
-            inv.max(f64::MIN),
+            inv.max(f64::MIN_POSITIVE),
             -2.0 * s * self.inv_of_squared_tolerance * (inv * inv),
         ]
     }
