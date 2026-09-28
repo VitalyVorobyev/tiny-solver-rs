@@ -1,8 +1,6 @@
 use log::trace;
 use std::{collections::HashMap, time::Instant};
 
-use faer_ext::IntoNalgebra;
-
 use crate::common::OptimizerOptions;
 use crate::linear;
 use crate::optimizer;
@@ -76,7 +74,7 @@ impl optimizer::Optimizer for GaussNewtonOptimizer {
             let solving_duration;
             if let Some(dx) = linear_solver.solve(&residuals, &jac) {
                 solving_duration = start.elapsed();
-                let dx_na = dx.as_ref().into_nalgebra().column(0).clone_owned();
+                let dx_na = nalgebra::DVector::from_fn(dx.nrows(), |i, _| dx[(i, 0)]);
                 self.apply_dx2(
                     &dx_na,
                     &mut parameter_blocks,

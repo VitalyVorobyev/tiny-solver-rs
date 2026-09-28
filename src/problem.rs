@@ -2,7 +2,6 @@ use std::collections::{HashMap, HashSet};
 use std::sync::{Arc, Mutex};
 
 use faer::sparse::{Argsort, Pair, SparseColMat, SymbolicSparseColMat};
-use faer_ext::IntoFaer;
 use nalgebra as na;
 use rayon::prelude::*;
 
@@ -240,7 +239,7 @@ impl Problem {
             .into_inner()
             .unwrap();
 
-        total_residual.view_range(.., ..).into_faer().to_owned()
+        faer::Mat::from_fn(total_residual.nrows(), 1, |i, _| total_residual[i])
     }
 
     pub fn compute_residual_and_jacobian(
@@ -273,7 +272,7 @@ impl Problem {
             .into_inner()
             .unwrap();
 
-        let residual_faer = total_residual.view_range(.., ..).into_faer().to_owned();
+        let residual_faer = faer::Mat::from_fn(total_residual.nrows(), 1, |i, _| total_residual[i]);
         let jacobian_faer = SparseColMat::new_from_argsort(
             symbolic_structure.pattern.clone(),
             &symbolic_structure.order,

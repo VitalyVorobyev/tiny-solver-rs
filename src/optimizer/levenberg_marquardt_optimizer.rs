@@ -3,7 +3,6 @@ use std::ops::Mul;
 use std::{collections::HashMap, time::Instant};
 
 use faer::sparse::Triplet;
-use faer_ext::IntoNalgebra;
 
 use crate::common::OptimizerOptions;
 use crate::linear;
@@ -145,7 +144,7 @@ impl optimizer::Optimizer for LevenbergMarquardtOptimizer {
 
                 trace!("Time elapsed in solve Ax=b is: {:?}", duration);
 
-                let dx_na = dx.as_ref().into_nalgebra().column(0).clone_owned();
+                let dx_na = nalgebra::DVector::from_fn(dx.nrows(), |i, _| dx[(i, 0)]);
 
                 let mut new_param_blocks = parameter_blocks.clone();
 

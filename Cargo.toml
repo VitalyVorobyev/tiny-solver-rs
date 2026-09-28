@@ -16,7 +16,6 @@ exclude = ["/.github/*", "*.ipynb", "./scripts/*", "examples/*", "tests/"]
 
 [dependencies]
 faer = "0.23.2"
-faer-ext = { version = "0.7.1", features = ["nalgebra"] }
 log = "0.4.28"
 nalgebra = "0.34.1"
 num-dual = "0.12.1"
