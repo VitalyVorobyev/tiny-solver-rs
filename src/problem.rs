@@ -57,11 +57,9 @@ impl Problem {
             let mut variable_local_idx_size_list = Vec::<(usize, usize)>::new();
             let mut count_variable_local_idx: usize = 0;
             for var_key in &residual_block.variable_key_list {
-                if let Some(param) = parameter_blocks.get(var_key) {
-                    variable_local_idx_size_list
-                        .push((count_variable_local_idx, param.tangent_size()));
-                    count_variable_local_idx += param.tangent_size();
-                };
+                let param = parameter_block(parameter_blocks, residual_block, var_key);
+                variable_local_idx_size_list.push((count_variable_local_idx, param.tangent_size()));
+                count_variable_local_idx += param.tangent_size();
             }
             for (i, var_key) in residual_block.variable_key_list.iter().enumerate() {
                 if let Some(variable_global_idx) = variable_name_to_col_idx_dict.get(var_key) {
@@ -292,9 +290,7 @@ impl Problem {
     ) {
         let mut params = Vec::new();
         for var_key in &residual_block.variable_key_list {
-            if let Some(param) = parameter_blocks.get(var_key) {
-                params.push(param);
-            };
+            params.push(parameter_block(parameter_blocks, residual_block, var_key));
         }
         let res = residual_block.residual(&params, with_loss_fn);
 
@@ -320,11 +316,10 @@ impl Problem {
         let mut variable_local_idx_size_list = Vec::<(usize, usize)>::new();
         let mut count_variable_local_idx: usize = 0;
         for var_key in &residual_block.variable_key_list {
-            if let Some(param) = parameter_blocks.get(var_key) {
-                params.push(param);
-                variable_local_idx_size_list.push((count_variable_local_idx, param.tangent_size()));
-                count_variable_local_idx += param.tangent_size();
-            };
+            let param = parameter_block(parameter_blocks, residual_block, var_key);
+            params.push(param);
+            variable_local_idx_size_list.push((count_variable_local_idx, param.tangent_size()));
+            count_variable_local_idx += param.tangent_size();
         }
         let (res, jac) = residual_block.residual_and_jacobian(&params);
         {
@@ -374,4 +369,19 @@ impl Problem {
 
         local_jacobian_list
     }
+}
+
+/// Looks up a variable used by `residual_block`, panicking with a clear
+/// message if no initial value was given for it.
+fn parameter_block<'a>(
+    parameter_blocks: &'a HashMap<String, ParameterBlock>,
+    residual_block: &residual_block::ResidualBlock,
+    var_key: &str,
+) -> &'a ParameterBlock {
+    parameter_blocks.get(var_key).unwrap_or_else(|| {
+        panic!(
+            "residual block {} uses variable '{}', which has no initial value",
+            residual_block.residual_block_id, var_key
+        )
+    })
 }
