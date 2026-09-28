@@ -40,15 +40,10 @@ impl ResidualBlock {
         let param_vec: Vec<_> = params.iter().map(|p| p.params.clone()).collect();
         let mut residual = self.factor.residual_func_f64(&param_vec);
         let squared_norm = residual.norm_squared();
-        if with_loss_fn {
-            if let Some(loss_func) = self.loss_func.as_ref() {
-                let rho = loss_func.evaluate(squared_norm);
-                // let cost = 0.5 * rho[0];
-                let corrector = Corrector::new(squared_norm, &rho);
-                corrector.correct_residuals(&mut residual);
-            }
-        } else {
-            // let cost = 0.5 * squared_norm;
+        if with_loss_fn && let Some(loss_func) = self.loss_func.as_ref() {
+            let rho = loss_func.evaluate(squared_norm);
+            let corrector = Corrector::new(squared_norm, &rho);
+            corrector.correct_residuals(&mut residual);
         }
         residual
     }
@@ -93,12 +88,9 @@ impl ResidualBlock {
         let squared_norm = residual.norm_squared();
         if let Some(loss_func) = self.loss_func.as_ref() {
             let rho = loss_func.evaluate(squared_norm);
-            // let cost = 0.5 * rho[0];
             let corrector = Corrector::new(squared_norm, &rho);
             corrector.correct_jacobian(&residual, &mut jacobian);
             corrector.correct_residuals(&mut residual);
-        } else {
-            // let cost = 0.5 * squared_norm;
         }
         (residual, jacobian)
     }

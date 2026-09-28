@@ -46,7 +46,6 @@ impl<T: na::RealField> SE3<T> {
     pub fn log(&self) -> na::DVector<T> {
         let mut xi = na::DVector::zeros(6);
         let xi_theta = self.rot.log();
-        // let xyz = self.xyz;
         xi.as_mut_slice()[0..3].clone_from_slice(xi_theta.as_slice());
         xi.as_mut_slice()[3..6].clone_from_slice(self.xyz.as_slice());
         xi
@@ -64,18 +63,6 @@ impl<T: na::RealField> SE3<T> {
             self.xyz[2].clone(),
         ]
     }
-
-    // pub fn hat(xi: na::VectorView3<T>) -> na::Matrix3<T> {
-    //     let mut xi_hat = na::Matrix3::zeros();
-    //     xi_hat[(0, 1)] = -xi[2].clone();
-    //     xi_hat[(0, 2)] = xi[1].clone();
-    //     xi_hat[(1, 0)] = xi[2].clone();
-    //     xi_hat[(1, 2)] = -xi[0].clone();
-    //     xi_hat[(2, 0)] = -xi[1].clone();
-    //     xi_hat[(2, 1)] = xi[0].clone();
-
-    //     xi_hat
-    // }
 
     pub fn cast<U: na::RealField + simba::scalar::SupersetOf<T>>(&self) -> SE3<U> {
         SE3 {

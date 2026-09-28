@@ -75,8 +75,6 @@ pub trait Optimizer {
                 param.update_params(param.plus_f64(dx_full.rows(0, tangent_size)));
             }
         });
-        // for (key, param) in params.par_iter_mut() {
-        // }
     }
     fn compute_error(
         &self,

@@ -6,7 +6,6 @@ use faer::sparse::linalg::solvers;
 
 use super::sparse::SparseLinearSolver;
 
-// #[pyclass]
 #[derive(Debug, Clone)]
 pub struct SparseCholeskySolver {
     symbolic_pattern: Option<solvers::SymbolicLlt<usize>>,

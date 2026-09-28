@@ -1,6 +1,5 @@
 use super::sparse::SparseLinearSolver;
 use faer::linalg::solvers::SolveLstsqCore;
-// use faer::prelude::{SpSolver, SpSolverLstsq};
 use faer::sparse::linalg::solvers;
 
 #[derive(Debug, Clone)]

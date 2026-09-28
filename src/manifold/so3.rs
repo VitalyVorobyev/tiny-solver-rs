@@ -151,7 +151,6 @@ impl<T: na::RealField> SO3<T> {
         let qz = w0.clone() * z1.clone() + x0.clone() * y1.clone() - y0.clone() * x1.clone()
             + z0.clone() * w1.clone();
         let qw = w0 * w1 - x0 * x1 - y0 * y1 - z0 * z1;
-        // println!("q {}", self.to_vec());
         SO3 { qx, qy, qz, qw }
     }
 }
