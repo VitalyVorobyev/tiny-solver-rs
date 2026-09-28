@@ -4,7 +4,6 @@ mod tests {
 
     use nalgebra as na;
     use tiny_solver;
-    use tiny_solver::Optimizer;
 
     #[test]
     fn new_problem() {
@@ -84,6 +83,8 @@ mod tests {
 
     #[test]
     fn remove_first_residual_block_then_optimize() {
+        use tiny_solver::Optimizer;
+
         let mut problem = tiny_solver::Problem::new();
         let first = problem.add_residual_block(
             1,
