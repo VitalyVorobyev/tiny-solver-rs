@@ -170,6 +170,7 @@ impl optimizer::Optimizer for LevenbergMarquardtOptimizer {
                 if rho > 0.0 {
                     // The linear model appears to be fitting, so accept (x + dx) as the new x.
                     parameter_blocks = new_param_blocks;
+                    current_error = new_residuals.as_ref().squared_norm_l2();
 
                     // Increase the trust region by reducing u
                     let tmp = 2.0 * rho - 1.0;
@@ -187,7 +188,6 @@ impl optimizer::Optimizer for LevenbergMarquardtOptimizer {
                 return None;
             }
 
-            current_error = self.compute_error(problem, &parameter_blocks);
             trace!("iter:{} total err:{}", i, current_error);
 
             if current_error < opt_option.min_error_threshold {
@@ -201,8 +201,9 @@ impl optimizer::Optimizer for LevenbergMarquardtOptimizer {
             if (last_err - current_error).abs() < opt_option.min_abs_error_decrease_threshold {
                 trace!("absolute error decrease low");
                 break;
-            } else if (last_err - current_error).abs() / last_err
-                < opt_option.min_rel_error_decrease_threshold
+            } else if last_err > 0.0
+                && (last_err - current_error).abs() / last_err
+                    < opt_option.min_rel_error_decrease_threshold
             {
                 trace!("relative error decrease low");
                 break;
