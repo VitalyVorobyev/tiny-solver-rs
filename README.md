@@ -37,6 +37,8 @@ On m3 macbook air
 
 It's not extremely optimized, but it's easy to install and use.
 
+Run `cargo bench` to time Gauss-Newton and Levenberg-Marquardt on the bundled g2o datasets.
+
 ## Usage
 Rust 
 ```rust
