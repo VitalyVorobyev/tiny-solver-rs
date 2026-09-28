@@ -33,7 +33,10 @@ pub fn read_g2o(filename: &str) -> (problem::Problem, HashMap<String, na::DVecto
     let mut problem = problem::Problem::new();
     let mut init_values = HashMap::<String, na::DVector<f64>>::new();
     for line in read_to_string(filename).unwrap().lines() {
-        let line: Vec<&str> = line.split(' ').collect();
+        let line: Vec<&str> = line.split_whitespace().collect();
+        if line.is_empty() {
+            continue;
+        }
         match line[0] {
             "VERTEX_SE2" => {
                 let x = line[2].parse::<f64>().unwrap();
@@ -95,8 +98,7 @@ pub fn read_g2o(filename: &str) -> (problem::Problem, HashMap<String, na::DVecto
                 );
             }
             _ => {
-                println!("err");
-                break;
+                log::warn!("read_g2o: skipping unsupported line: {}", line.join(" "));
             }
         }
     }
