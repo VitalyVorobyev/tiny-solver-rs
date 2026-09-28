@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::{BTreeMap, HashMap, HashSet};
 use std::sync::{Arc, Mutex};
 
 use faer::sparse::{Argsort, Pair, SparseColMat, SymbolicSparseColMat};
@@ -15,7 +15,8 @@ type ResidualBlockId = usize;
 pub struct Problem {
     pub total_residual_dimension: usize,
     residual_id_count: usize,
-    residual_blocks: HashMap<ResidualBlockId, residual_block::ResidualBlock>,
+    // Ordered so that the residual/Jacobian layout does not depend on hash order.
+    residual_blocks: BTreeMap<ResidualBlockId, residual_block::ResidualBlock>,
     pub fixed_variable_indexes: HashMap<String, HashSet<usize>>,
     pub variable_bounds: HashMap<String, HashMap<usize, (f64, f64)>>,
     pub variable_manifold: HashMap<String, Arc<dyn Manifold + Sync + Send>>,
@@ -38,7 +39,7 @@ impl Problem {
         Problem {
             total_residual_dimension: 0,
             residual_id_count: 0,
-            residual_blocks: HashMap::new(),
+            residual_blocks: BTreeMap::new(),
             fixed_variable_indexes: HashMap::new(),
             variable_bounds: HashMap::new(),
             variable_manifold: HashMap::new(),
@@ -104,8 +105,11 @@ impl Problem {
     ) -> HashMap<String, usize> {
         let mut count_col_idx = 0;
         let mut variable_name_to_col_idx_dict = HashMap::new();
-        parameter_blocks
-            .iter()
+        // Assign columns in name order so the layout is the same on every run.
+        let mut sorted_parameter_blocks: Vec<_> = parameter_blocks.iter().collect();
+        sorted_parameter_blocks.sort_unstable_by_key(|(param_name, _)| *param_name);
+        sorted_parameter_blocks
+            .into_iter()
             .for_each(|(param_name, param_block)| {
                 variable_name_to_col_idx_dict.insert(param_name.to_owned(), count_col_idx);
                 let effective_size = if param_block.manifold.is_some() {
