@@ -62,6 +62,10 @@ mod tests {
         );
 
         assert_eq!(jac.ncols(), 6);
+        assert!(parameter_blocks["x0"].is_constant());
+        assert_eq!(parameter_blocks["x0"].effective_tangent_size(), 0);
+        assert!(!parameter_blocks["x1"].is_constant());
+        assert_eq!(parameter_blocks["x1"].effective_tangent_size(), 6);
     }
 
     fn assert_solution(result: &HashMap<String, na::DVector<f64>>) {

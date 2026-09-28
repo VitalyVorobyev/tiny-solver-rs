@@ -37,13 +37,7 @@ impl optimizer::Optimizer for GaussNewtonOptimizer {
             problem.get_variable_name_to_col_idx_dict(&parameter_blocks);
         let total_variable_dimension = parameter_blocks
             .values()
-            .map(|p| {
-                if p.manifold.is_some() {
-                    p.tangent_size()
-                } else {
-                    p.tangent_size() - p.fixed_variables.len()
-                }
-            })
+            .map(|p| p.effective_tangent_size())
             .sum();
 
         let opt_option = optimizer_option.unwrap_or_default();

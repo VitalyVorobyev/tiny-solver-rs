@@ -64,6 +64,12 @@ impl Problem {
                 };
             }
             for (i, var_key) in residual_block.variable_key_list.iter().enumerate() {
+                if parameter_blocks
+                    .get(var_key)
+                    .is_some_and(ParameterBlock::is_constant)
+                {
+                    continue;
+                }
                 if let Some(variable_global_idx) = variable_name_to_col_idx_dict.get(var_key) {
                     let (_, var_size) = variable_local_idx_size_list[i];
                     for row_idx in 0..residual_block.dim_residual {
@@ -108,12 +114,7 @@ impl Problem {
             .iter()
             .for_each(|(param_name, param_block)| {
                 variable_name_to_col_idx_dict.insert(param_name.to_owned(), count_col_idx);
-                let effective_size = if param_block.manifold.is_some() {
-                    param_block.tangent_size()
-                } else {
-                    param_block.tangent_size() - param_block.fixed_variables.len()
-                };
-                count_col_idx += effective_size;
+                count_col_idx += param_block.effective_tangent_size();
             });
         variable_name_to_col_idx_dict
     }
@@ -153,6 +154,10 @@ impl Problem {
             None
         }
     }
+    /// Fixes coordinate `idx` of variable `var_to_fix`.
+    ///
+    /// For a variable with a manifold, individual coordinates cannot be fixed;
+    /// fix all of its ambient coordinates to hold the whole block constant.
     pub fn fix_variable(&mut self, var_to_fix: &str, idx: usize) {
         if let Some(var_mut) = self.fixed_variable_indexes.get_mut(var_to_fix) {
             var_mut.insert(idx);
@@ -344,6 +349,9 @@ impl Problem {
                 let (variable_local_idx, var_size) = variable_local_idx_size_list[i];
                 let variable_jac = jac.view((0, variable_local_idx), (jac.shape().0, var_size));
                 let param = &params[i];
+                if param.is_constant() {
+                    continue;
+                }
                 for row_idx in 0..jac.shape().0 {
                     for col_idx in 0..var_size {
                         if param.manifold.is_none() && param.fixed_variables.contains(&col_idx) {

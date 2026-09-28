@@ -38,6 +38,24 @@ impl ParameterBlock {
             self.ambient_size()
         }
     }
+    /// Whether every ambient coordinate is fixed, i.e. the block is held constant.
+    pub fn is_constant(&self) -> bool {
+        (0..self.ambient_size()).all(|i| self.fixed_variables.contains(&i))
+    }
+    /// Number of columns this block contributes to the Jacobian.
+    ///
+    /// Individual fixed coordinates are only removed for blocks without a
+    /// manifold. A block with a manifold is either fully free or, when all of
+    /// its ambient coordinates are fixed, constant.
+    pub fn effective_tangent_size(&self) -> usize {
+        if self.is_constant() {
+            0
+        } else if self.manifold.is_some() {
+            self.tangent_size()
+        } else {
+            self.tangent_size() - self.fixed_variables.len()
+        }
+    }
     pub fn plus_f64(&self, dx: na::DVectorView<f64>) -> na::DVector<f64> {
         let mut new_param = na::DVector::zeros(self.ambient_size());
         if let Some(m) = &self.manifold {

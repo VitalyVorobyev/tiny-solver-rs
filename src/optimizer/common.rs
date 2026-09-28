@@ -51,12 +51,11 @@ pub trait Optimizer {
     ) {
         params.iter_mut().for_each(|(key, param)| {
             if let Some(col_idx) = variable_name_to_col_idx_dict.get(key) {
+                if param.is_constant() {
+                    return;
+                }
                 let tangent_size = param.tangent_size();
-                let effective_size = if param.manifold.is_some() {
-                    tangent_size
-                } else {
-                    tangent_size - param.fixed_variables.len()
-                };
+                let effective_size = param.effective_tangent_size();
 
                 let dx_reduced = dx.rows(*col_idx, effective_size);
 
