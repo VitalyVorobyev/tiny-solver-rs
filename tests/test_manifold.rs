@@ -23,4 +23,20 @@ mod tests {
             assert!(equal_to_na(&r));
         }
     }
+
+    /// exp must agree with nalgebra (up to the quaternion sign) for any rotation
+    /// angle, including angles beyond 2*pi.
+    #[test]
+    fn test_so3_exp_large_angles() {
+        let axis = na::Vector3::new(1.0, -2.0, 0.5).normalize();
+        for i in 1..400 {
+            let theta = 4.0 * PI * i as f64 / 400.0;
+            let rvec = axis * theta;
+            let q = SO3::exp(na::DVector::from_column_slice(rvec.as_slice()).as_view()).to_vec();
+            let expected = na::UnitQuaternion::from_scaled_axis(rvec);
+            let expected = na::Vector4::new(expected.i, expected.j, expected.k, expected.w);
+            let diff = (q - expected).norm().min((q + expected).norm());
+            assert!(diff < 1e-9, "theta = {theta}: {q} != +/-{expected}");
+        }
+    }
 }
