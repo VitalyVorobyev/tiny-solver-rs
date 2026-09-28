@@ -3,7 +3,6 @@ mod tests {
     use std::collections::HashMap;
 
     use nalgebra as na;
-    use tiny_solver;
 
     #[test]
     fn new_problem() {
