@@ -148,6 +148,19 @@ impl Problem {
     ) -> Option<residual_block::ResidualBlock> {
         if let Some(residual_block) = self.residual_blocks.remove(&block_id) {
             self.total_residual_dimension -= residual_block.dim_residual;
+
+            // Close the gap left in the residual vector: re-pack the remaining
+            // blocks' rows in insertion (id) order.
+            let mut remaining_ids: Vec<ResidualBlockId> =
+                self.residual_blocks.keys().copied().collect();
+            remaining_ids.sort_unstable();
+            let mut row_start = 0;
+            for id in remaining_ids {
+                let block = self.residual_blocks.get_mut(&id).unwrap();
+                block.residual_row_start_idx = row_start;
+                row_start += block.dim_residual;
+            }
+
             Some(residual_block)
         } else {
             None
