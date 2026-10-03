@@ -103,7 +103,8 @@ fn main() {
                     1 => Box::new(CauchyLoss::new(scale)),
                     _ => Box::new(ArctanLoss::new(scale * scale)),
                 };
-                problem.add_residual_block(1, &["p"], Box::new(Fit { evaluations: evaluations.clone(), model, x, y }), Some(l));
+                let l = if std::env::var("NOLOSS").is_ok() { None } else { Some(l) };
+                problem.add_residual_block(1, &["p"], Box::new(Fit { evaluations: evaluations.clone(), model, x, y }), l);
             }
             let initial = HashMap::from([("p".to_string(), na::DVector::from_vec(init.clone()))]);
             let a = if loss == 2 { scale * scale } else { scale };

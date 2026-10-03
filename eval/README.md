@@ -37,9 +37,25 @@ poses more than 10 apart) and prints sum rho, the relative gradient and the best
     /tmp/ceres-build/sweep tight   < instances.txt > curves_ceres_tight.txt
     python3 eval/analyze_curves.py <dir with the six files>
 
+## Failed linear solves (known limitation)
+
+    # in each checkout: the same 300 fits without loss functions, tolerances off
+    NOLOSS=1 ./target/release/examples/robust_curves 300 tight > curves_old_tight_noloss.txt
+    grep -c ' lm fail' curves_old_tight_noloss.txt     # each fit is printed three times
+
+Without loss functions the PR does not change what LM minimizes, and master already ends in a
+failed linear solve in 27 of these 300 fits (23 with the PR; the cost is summed in a different
+order, which changes the path on these fits). All of them are exponential fits that have no finite
+minimum: b -> 0 while a and c grow without bound in opposite directions. LM keeps accepting steps,
+u falls to about 1e-16 while J^T J becomes nearly singular, Cholesky fails, and LM returns `None`.
+
 ## Cost evaluation micro-benchmark (section 4)
 
-    cargo run --release --example cost_bench     # PR checkout only
+    cargo run --release --example cost_bench                        # PR checkout only
+    RAYON_NUM_THREADS=1 cargo run --release --example cost_bench
+
+On one thread the two differ by about 15%. With the default thread pool the old evaluation is
+slower than on one thread, because every residual block waits for the same mutex.
 
 `results/` holds the raw outputs behind the PR's tables (measured with the deterministic layout of
 the companion PR applied to both sides, so runs repeat exactly).

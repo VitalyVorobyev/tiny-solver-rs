@@ -1,0 +1,8 @@
+# default rayon pool (12 threads)
+input_M3500_g2o.g2o    squared norm of corrected residuals 1.425 ms   sum of rho 0.168 ms   (median of 200)
+sphere2500.g2o         squared norm of corrected residuals 1.365 ms   sum of rho 0.176 ms   (median of 200)
+parking-garage.g2o     squared norm of corrected residuals 1.687 ms   sum of rho 0.183 ms   (median of 200)
+# RAYON_NUM_THREADS=1
+input_M3500_g2o.g2o    squared norm of corrected residuals 0.853 ms   sum of rho 0.734 ms   (median of 200)
+sphere2500.g2o         squared norm of corrected residuals 0.853 ms   sum of rho 0.709 ms   (median of 200)
+parking-garage.g2o     squared norm of corrected residuals 1.083 ms   sum of rho 0.904 ms   (median of 200)
