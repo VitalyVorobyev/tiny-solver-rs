@@ -57,5 +57,16 @@ u falls to about 1e-16 while J^T J becomes nearly singular, Cholesky fails, and 
 On one thread the two differ by about 15%. With the default thread pool the old evaluation is
 slower than on one thread, because every residual block waits for the same mutex.
 
+## Re-check after the companion PR changed
+
+The companion PR later dropped a sort in LM's step-size test (0d4c7c2). Everything was re-run with
+it, on two checkouts: master + 0d4c7c2 (OLD) and this PR + 0d4c7c2 (NEW).
+
+    python3 eval/recheck_pgo.py old <OLD checkout> eval/results    # and: new <NEW checkout>
+    # curve fits: rerun the commands above and diff, ignoring the us= column
+
+All 51 recorded pose-graph runs per side give the same sum_rho, grad_rel and LM iteration count,
+and all six curve-fit files are identical apart from timings.
+
 `results/` holds the raw outputs behind the PR's tables (measured with the deterministic layout of
 the companion PR applied to both sides, so runs repeat exactly).
