@@ -1,0 +1,49 @@
+columns: within 1e-9 / 1e-6 / 1e-3 of the best known minimum, failures; relative excess of sum_rho; mean evaluations per fit; total ms (1 thread)
+
+== default options
+-- Huber (300 fits)
+   old   lm:  103  176  281   0  med  9.2e-08  p90  5.1e-04  max  1.6e-01  evals   56.5  ms    464.4
+   new   lm:   82  231  287   0  med  2.0e-08  p90  1.8e-04  max  1.6e-01  evals   32.7  ms    249.3
+   old   gn:  157  225  233  62  med  1.4e-10  p90  2.0e-07  max 4.1e+130  evals   24.1  ms    220.8
+   new   gn:   85  210  233  61  med  6.4e-09  p90  1.3e-06  max 4.1e+130  evals   22.8  ms    205.4
+   ceres lm:   13  241  286   0  med  2.0e-07  p90  8.6e-05  max  8.0e-02  evals    nan  ms      nan
+-- Cauchy (300 fits)
+   old   lm:   97  161  258   0  med  3.0e-07  p90  5.7e-03  max  3.0e+00  evals   68.6  ms    564.5
+   new   lm:   45  222  288   0  med  5.8e-08  p90  2.1e-04  max  2.3e-01  evals   45.4  ms    342.8
+   old   gn:  154  233  236  43  med  4.0e-10  p90  4.1e-07  max      inf  evals   33.2  ms    302.8
+   new   gn:   48  203  238  44  med  4.0e-08  p90  4.3e-06  max  8.0e+01  evals   33.0  ms    302.7
+   ceres lm:    4  244  281   0  med  3.5e-07  p90  3.5e-04  max  2.3e-01  evals    nan  ms      nan
+-- Arctan (300 fits)
+   old   lm:   60  102  134   0  med  6.5e-02  p90  2.6e+00  max  3.3e+01  evals   65.0  ms    579.8
+   new   lm:  100  213  281   0  med  2.8e-08  p90  2.8e-04  max  1.4e+00  evals   50.1  ms    393.7
+   old   gn:  191  228  233  24  med  4.5e-11  p90  8.5e-01  max  5.2e+00  evals   29.9  ms    273.2
+   new   gn:   93  191  232  20  med  2.3e-08  p90  1.0e+00  max  5.2e+00  evals   24.1  ms    223.3
+   ceres lm:   22  243  275   0  med  2.9e-07  p90  3.3e-04  max  9.7e-01  evals    nan  ms      nan
+-- convex subset: line + Huber (150 fits)
+   old   lm:   81  118  150   0  med  1.9e-10  p90  3.1e-05  max  3.7e-04  evals   31.1  ms    118.5
+   new   lm:   66  145  150   0  med  3.2e-09  p90  1.9e-07  max  3.4e-06  evals   12.3  ms     41.1
+   ceres lm:   12  147  150   0  med  7.8e-08  p90  7.9e-07  max  1.4e-06  evals    nan  ms      nan
+
+== tight options
+-- Huber (300 fits)
+   old   lm:  139  178  283   0  med  2.1e-08  p90  3.7e-04  max  1.6e-01  evals  168.9  ms   1372.5
+   new   lm:  271  282  285   2  med  0.0e+00  p90  5.4e-10  max  1.6e-01  evals  268.1  ms   1992.4
+   old   gn:  231  231  232  67  med  0.0e+00  p90  0.0e+00  max  4.2e-02  evals  790.4  ms   7104.4
+   new   gn:  231  231  232  67  med  0.0e+00  p90  0.0e+00  max  4.2e-02  evals  790.5  ms   6639.4
+   ceres lm:  281  285  288   0  med  0.0e+00  p90  0.0e+00  max  8.0e-02  evals    nan  ms      nan
+-- Cauchy (300 fits)
+   old   lm:  134  163  263   0  med  1.9e-07  p90  2.7e-03  max  3.0e+00  evals  160.8  ms   1353.7
+   new   lm:  267  286  287   2  med  0.0e+00  p90  4.7e-09  max  2.3e-01  evals  246.5  ms   1822.8
+   old   gn:  238  238  238  56  med  0.0e+00  p90  0.0e+00  max  8.9e+00  evals  838.9  ms   7591.3
+   new   gn:  238  238  238  56  med  0.0e+00  p90  0.0e+00  max  8.9e+00  evals  839.0  ms   7226.7
+   ceres lm:  281  286  287   0  med  0.0e+00  p90  0.0e+00  max  2.3e-01  evals    nan  ms      nan
+-- Arctan (300 fits)
+   old   lm:   65  102  135   0  med  6.5e-02  p90  2.6e+00  max  3.3e+01  evals   79.2  ms    729.2
+   new   lm:  274  289  290   0  med  0.0e+00  p90  0.0e+00  max  7.1e-01  evals  227.2  ms   1665.5
+   old   gn:  235  235  235  29  med  0.0e+00  p90  6.4e-01  max  5.2e+00  evals  911.7  ms   8312.9
+   new   gn:  235  235  235  29  med  0.0e+00  p90  6.4e-01  max  5.2e+00  evals  911.8  ms   7742.5
+   ceres lm:  287  293  293   0  med  0.0e+00  p90  0.0e+00  max  9.7e-01  evals    nan  ms      nan
+-- convex subset: line + Huber (150 fits)
+   old   lm:  101  119  150   0  med  0.0e+00  p90  3.1e-05  max  3.7e-04  evals   48.1  ms    190.4
+   new   lm:  150  150  150   0  med  0.0e+00  p90  0.0e+00  max  0.0e+00  evals   35.1  ms    122.7
+   ceres lm:  150  150  150   0  med  0.0e+00  p90  0.0e+00  max  0.0e+00  evals    nan  ms      nan

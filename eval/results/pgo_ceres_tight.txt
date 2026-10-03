@@ -1,0 +1,6 @@
+input_M3500_g2o.g2o huber 1 ceres-point out=0.05 sum_rho=1.674116424235e3 grad_rel=4.481e-6 NO_CONVERGENCE iterations=501
+input_M3500_g2o.g2o cauchy 1 ceres-point out=0.05 sum_rho=9.718311389440e2 grad_rel=3.025e-2 NO_CONVERGENCE iterations=501
+sphere2500.g2o huber 1 ceres-point out=0.05 sum_rho=5.984805532063e3 grad_rel=1.283e-3 NO_CONVERGENCE iterations=501
+sphere2500.g2o cauchy 1 ceres-point out=0.05 sum_rho=2.032923385071e3 grad_rel=8.495e-8 CONVERGENCE iterations=291
+parking-garage.g2o huber 1 ceres-point out=0.05 sum_rho=8.722562406243e3 grad_rel=3.775e-2 NO_CONVERGENCE iterations=501
+parking-garage.g2o cauchy 1 ceres-point out=0.05 sum_rho=2.202494165054e3 grad_rel=2.422e-3 NO_CONVERGENCE iterations=501

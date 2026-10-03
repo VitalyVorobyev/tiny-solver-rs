@@ -1,0 +1,6 @@
+old input_M3500_g2o.g2o huber 1 lm tight out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836224688e0 grad_rel=3.860e-10 time=0.481 solves=36 accepted=34
+new input_M3500_g2o.g2o huber 1 lm tight out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836224688e0 grad_rel=4.772e-10 time=0.334 solves=29 accepted=28
+old sphere2500.g2o huber 1 lm tight out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257501526799e1 grad_rel=1.155e-9 time=2.726 solves=54 accepted=53
+new sphere2500.g2o huber 1 lm tight out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257501526799e1 grad_rel=2.786e-9 time=2.387 solves=50 accepted=48
+old parking-garage.g2o huber 1 lm tight out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248960073500e0 grad_rel=1.269e-11 time=1.250 solves=31 accepted=30
+new parking-garage.g2o huber 1 lm tight out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248960073500e0 grad_rel=3.325e-13 time=1.272 solves=33 accepted=31

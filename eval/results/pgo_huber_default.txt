@@ -1,0 +1,12 @@
+old input_M3500_g2o.g2o huber 1 gn default out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836224700e0 grad_rel=3.214e-7 time=0.076 lines=6 accepted=6
+new input_M3500_g2o.g2o huber 1 gn default out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836224700e0 grad_rel=3.214e-7 time=0.064 lines=6 accepted=6
+old input_M3500_g2o.g2o huber 1 lm default out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836326365e0 grad_rel=6.742e-6 time=0.425 lines=63 accepted=31
+new input_M3500_g2o.g2o huber 1 lm default out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836389543e0 grad_rel=9.123e-6 time=0.268 lines=50 accepted=25
+old sphere2500.g2o huber 1 gn default out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257501545751e1 grad_rel=6.600e-5 time=0.390 lines=8 accepted=8
+new sphere2500.g2o huber 1 gn default out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257501545751e1 grad_rel=6.600e-5 time=0.382 lines=8 accepted=8
+old sphere2500.g2o huber 1 lm default out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257632596471e1 grad_rel=3.634e-4 time=1.876 lines=74 accepted=37
+new sphere2500.g2o huber 1 lm default out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257612174620e1 grad_rel=3.396e-4 time=1.585 lines=66 accepted=33
+old parking-garage.g2o huber 1 gn default out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248960073512e0 grad_rel=1.443e-7 time=0.165 lines=4 accepted=4
+new parking-garage.g2o huber 1 gn default out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248960073512e0 grad_rel=1.443e-7 time=0.157 lines=4 accepted=4
+old parking-garage.g2o huber 1 lm default out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248990153909e0 grad_rel=1.476e-5 time=0.716 lines=36 accepted=18
+new parking-garage.g2o huber 1 lm default out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248990153909e0 grad_rel=1.476e-5 time=0.658 lines=36 accepted=18

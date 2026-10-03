@@ -1,0 +1,90 @@
+old seed=1 input_M3500_g2o.g2o huber 1 lm default out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836326365e0 grad_rel=6.742e-6 time=0.471 solves=32
+new seed=1 input_M3500_g2o.g2o huber 1 lm default out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836389543e0 grad_rel=9.123e-6 time=0.298 solves=25
+ceres seed=1 input_M3500_g2o.g2o huber 1 ceres-point out=0 sum_rho=3.021836389543e0 grad_rel=9.123e-6 iterations=26 time=0.116 CONVERGENCE
+old seed=1 input_M3500_g2o.g2o huber 1 lm default out=0.05 edges=5727 sum_rho0=2.714224622e4 sum_rho=1.759595722003e3 grad_rel=2.101e-2 time=1.413 solves=58
+new seed=1 input_M3500_g2o.g2o huber 1 lm default out=0.05 edges=5727 sum_rho0=2.714224622e4 sum_rho=1.710625075923e3 grad_rel=8.715e-2 time=2.022 solves=100
+ceres seed=1 input_M3500_g2o.g2o huber 1 ceres-point out=0.05 sum_rho=1.709179260042e3 grad_rel=7.386e-2 iterations=101 time=0.562 NO_CONVERGENCE
+old seed=2 input_M3500_g2o.g2o huber 1 lm default out=0.05 edges=5727 sum_rho0=2.602130705e4 sum_rho=1.762788575830e3 grad_rel=3.662e-2 time=2.207 solves=38
+new seed=2 input_M3500_g2o.g2o huber 1 lm default out=0.05 edges=5727 sum_rho0=2.602130705e4 sum_rho=1.711152855107e3 grad_rel=8.879e-2 time=1.655 solves=100
+ceres seed=2 input_M3500_g2o.g2o huber 1 ceres-point out=0.05 sum_rho=1.713364416933e3 grad_rel=4.309e-2 iterations=101 time=0.532 NO_CONVERGENCE
+old seed=3 input_M3500_g2o.g2o huber 1 lm default out=0.05 edges=5727 sum_rho0=2.743592699e4 sum_rho=1.751183851845e3 grad_rel=3.613e-2 time=2.121 solves=100
+new seed=3 input_M3500_g2o.g2o huber 1 lm default out=0.05 edges=5727 sum_rho0=2.743592699e4 sum_rho=1.748325258358e3 grad_rel=2.072e-1 time=1.318 solves=67
+ceres seed=3 input_M3500_g2o.g2o huber 1 ceres-point out=0.05 sum_rho=1.722501331924e3 grad_rel=2.659e-2 iterations=101 time=0.551 NO_CONVERGENCE
+old seed=1 input_M3500_g2o.g2o huber 1 lm default out=0.1 edges=5999 sum_rho0=4.502521963e4 sum_rho=2.708727663330e3 grad_rel=4.373e-2 time=2.687 solves=92
+new seed=1 input_M3500_g2o.g2o huber 1 lm default out=0.1 edges=5999 sum_rho0=4.502521963e4 sum_rho=2.696230308756e3 grad_rel=1.481e-2 time=2.746 solves=94
+ceres seed=1 input_M3500_g2o.g2o huber 1 ceres-point out=0.1 sum_rho=2.696176311130e3 grad_rel=1.631e-2 iterations=95 time=0.785 CONVERGENCE
+old seed=1 input_M3500_g2o.g2o cauchy 1 lm default out=0 edges=5454 sum_rho0=2.500904628e3 sum_rho=3.020167573331e0 grad_rel=6.227e-5 time=0.468 solves=34
+new seed=1 input_M3500_g2o.g2o cauchy 1 lm default out=0 edges=5454 sum_rho0=2.500904628e3 sum_rho=3.020165921815e0 grad_rel=7.489e-6 time=0.347 solves=32
+ceres seed=1 input_M3500_g2o.g2o cauchy 1 ceres-point out=0 sum_rho=3.020165921815e0 grad_rel=7.489e-6 iterations=33 time=0.141 CONVERGENCE
+old seed=1 input_M3500_g2o.g2o cauchy 1 lm default out=0.05 edges=5727 sum_rho0=4.341726173e3 sum_rho=1.382637210738e3 grad_rel=3.441e-2 time=0.791 solves=37
+new seed=1 input_M3500_g2o.g2o cauchy 1 lm default out=0.05 edges=5727 sum_rho0=4.341726173e3 sum_rho=1.009352045548e3 grad_rel=3.279e-2 time=1.930 solves=100
+ceres seed=1 input_M3500_g2o.g2o cauchy 1 ceres-point out=0.05 sum_rho=1.009352045548e3 grad_rel=3.279e-2 iterations=101 time=0.580 NO_CONVERGENCE
+old seed=2 input_M3500_g2o.g2o cauchy 1 lm default out=0.05 edges=5727 sum_rho0=4.301003641e3 sum_rho=1.459502101801e3 grad_rel=1.112e-2 time=0.463 solves=22
+new seed=2 input_M3500_g2o.g2o cauchy 1 lm default out=0.05 edges=5727 sum_rho0=4.301003641e3 sum_rho=9.694165064852e2 grad_rel=7.591e-2 time=1.729 solves=100
+ceres seed=2 input_M3500_g2o.g2o cauchy 1 ceres-point out=0.05 sum_rho=9.692951585190e2 grad_rel=3.778e-2 iterations=101 time=0.544 NO_CONVERGENCE
+old seed=3 input_M3500_g2o.g2o cauchy 1 lm default out=0.05 edges=5727 sum_rho0=4.357210792e3 sum_rho=1.449594911625e3 grad_rel=3.812e-2 time=0.752 solves=35
+new seed=3 input_M3500_g2o.g2o cauchy 1 lm default out=0.05 edges=5727 sum_rho0=4.357210792e3 sum_rho=1.006254001199e3 grad_rel=2.993e-2 time=1.917 solves=100
+ceres seed=3 input_M3500_g2o.g2o cauchy 1 ceres-point out=0.05 sum_rho=1.011582627117e3 grad_rel=6.569e-2 iterations=101 time=0.553 NO_CONVERGENCE
+old seed=1 input_M3500_g2o.g2o cauchy 1 lm default out=0.1 edges=5999 sum_rho0=6.156445553e3 sum_rho=2.468884347914e3 grad_rel=7.716e-2 time=1.402 solves=42
+new seed=1 input_M3500_g2o.g2o cauchy 1 lm default out=0.1 edges=5999 sum_rho0=6.156445553e3 sum_rho=1.586348343690e3 grad_rel=1.255e-2 time=2.348 solves=90
+ceres seed=1 input_M3500_g2o.g2o cauchy 1 ceres-point out=0.1 sum_rho=1.586220953532e3 grad_rel=1.724e-2 iterations=101 time=0.838 NO_CONVERGENCE
+old seed=1 sphere2500.g2o huber 1 lm default out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257632596471e1 grad_rel=3.634e-4 time=2.001 solves=37
+new seed=1 sphere2500.g2o huber 1 lm default out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257612174620e1 grad_rel=3.396e-4 time=1.716 solves=33
+ceres seed=1 sphere2500.g2o huber 1 ceres-point out=0 sum_rho=4.257506114360e1 grad_rel=9.570e-5 iterations=41 time=0.514 CONVERGENCE
+old seed=1 sphere2500.g2o huber 1 lm default out=0.05 edges=5197 sum_rho0=7.317157959e4 sum_rho=6.343142941886e3 grad_rel=5.550e-1 time=8.033 solves=100
+new seed=1 sphere2500.g2o huber 1 lm default out=0.05 edges=5197 sum_rho0=7.317157959e4 sum_rho=6.173228047425e3 grad_rel=7.948e-1 time=7.749 solves=100
+ceres seed=1 sphere2500.g2o huber 1 ceres-point out=0.05 sum_rho=6.162325456035e3 grad_rel=5.548e-1 iterations=101 time=2.207 NO_CONVERGENCE
+old seed=2 sphere2500.g2o huber 1 lm default out=0.05 edges=5197 sum_rho0=7.434980919e4 sum_rho=6.267781559174e3 grad_rel=6.178e-1 time=8.688 solves=100
+new seed=2 sphere2500.g2o huber 1 lm default out=0.05 edges=5197 sum_rho0=7.434980919e4 sum_rho=6.283158427398e3 grad_rel=6.367e-1 time=4.560 solves=59
+ceres seed=2 sphere2500.g2o huber 1 ceres-point out=0.05 sum_rho=6.059425219209e3 grad_rel=2.029e-1 iterations=101 time=2.259 NO_CONVERGENCE
+old seed=3 sphere2500.g2o huber 1 lm default out=0.05 edges=5197 sum_rho0=7.624771426e4 sum_rho=6.407550003693e3 grad_rel=1.944e-1 time=7.660 solves=100
+new seed=3 sphere2500.g2o huber 1 lm default out=0.05 edges=5197 sum_rho0=7.624771426e4 sum_rho=6.198130974330e3 grad_rel=4.808e-1 time=8.975 solves=100
+ceres seed=3 sphere2500.g2o huber 1 ceres-point out=0.05 sum_rho=6.164180321529e3 grad_rel=4.890e-1 iterations=101 time=2.525 NO_CONVERGENCE
+old seed=1 sphere2500.g2o huber 1 lm default out=0.1 edges=5445 sum_rho0=1.059877860e5 sum_rho=9.276791023574e3 grad_rel=4.977e-1 time=11.418 solves=100
+new seed=1 sphere2500.g2o huber 1 lm default out=0.1 edges=5445 sum_rho0=1.059877860e5 sum_rho=9.058341712150e3 grad_rel=1.892e-1 time=10.327 solves=100
+ceres seed=1 sphere2500.g2o huber 1 ceres-point out=0.1 sum_rho=9.004077804957e3 grad_rel=3.881e-1 iterations=101 time=4.276 NO_CONVERGENCE
+old seed=1 sphere2500.g2o cauchy 1 lm default out=0 edges=4950 sum_rho0=9.828170199e3 sum_rho=4.711448798684e1 grad_rel=7.231e-3 time=1.686 solves=33
+new seed=1 sphere2500.g2o cauchy 1 lm default out=0 edges=4950 sum_rho0=9.828170199e3 sum_rho=4.228446440702e1 grad_rel=7.452e-4 time=1.692 solves=32
+ceres seed=1 sphere2500.g2o cauchy 1 ceres-point out=0 sum_rho=4.228340009491e1 grad_rel=2.089e-4 iterations=40 time=0.538 CONVERGENCE
+old seed=1 sphere2500.g2o cauchy 1 lm default out=0.05 edges=5197 sum_rho0=1.182797870e4 sum_rho=2.033197077785e3 grad_rel=1.317e-2 time=2.689 solves=36
+new seed=1 sphere2500.g2o cauchy 1 lm default out=0.05 edges=5197 sum_rho0=1.182797870e4 sum_rho=2.033186425436e3 grad_rel=9.958e-3 time=1.186 solves=16
+ceres seed=1 sphere2500.g2o cauchy 1 ceres-point out=0.05 sum_rho=2.032942636245e3 grad_rel=3.577e-3 iterations=44 time=0.973 CONVERGENCE
+old seed=2 sphere2500.g2o cauchy 1 lm default out=0.05 edges=5197 sum_rho0=1.185133179e4 sum_rho=2.051475404377e3 grad_rel=1.323e-2 time=2.475 solves=30
+new seed=2 sphere2500.g2o cauchy 1 lm default out=0.05 edges=5197 sum_rho0=1.185133179e4 sum_rho=2.050964347496e3 grad_rel=1.451e-2 time=1.570 solves=21
+ceres seed=2 sphere2500.g2o cauchy 1 ceres-point out=0.05 sum_rho=2.050870313230e3 grad_rel=3.196e-3 iterations=35 time=0.765 CONVERGENCE
+old seed=3 sphere2500.g2o cauchy 1 lm default out=0.05 edges=5197 sum_rho0=1.188306238e4 sum_rho=2.077521616723e3 grad_rel=3.557e-2 time=2.385 solves=30
+new seed=3 sphere2500.g2o cauchy 1 lm default out=0.05 edges=5197 sum_rho0=1.188306238e4 sum_rho=2.077468641023e3 grad_rel=1.245e-2 time=1.223 solves=15
+ceres seed=3 sphere2500.g2o cauchy 1 ceres-point out=0.05 sum_rho=2.076802326488e3 grad_rel=3.823e-3 iterations=58 time=1.374 CONVERGENCE
+old seed=1 sphere2500.g2o cauchy 1 lm default out=0.1 edges=5445 sum_rho0=1.383849022e4 sum_rho=4.041761944168e3 grad_rel=2.688e-1 time=5.291 solves=37
+new seed=1 sphere2500.g2o cauchy 1 lm default out=0.1 edges=5445 sum_rho0=1.383849022e4 sum_rho=3.587145576564e3 grad_rel=3.078e-1 time=12.069 solves=100
+ceres seed=1 sphere2500.g2o cauchy 1 ceres-point out=0.1 sum_rho=3.588116719418e3 grad_rel=1.652e-1 iterations=101 time=4.500 NO_CONVERGENCE
+old seed=1 parking-garage.g2o huber 1 lm default out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248990153909e0 grad_rel=1.476e-5 time=0.792 solves=18
+new seed=1 parking-garage.g2o huber 1 lm default out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248990153909e0 grad_rel=1.476e-5 time=0.744 solves=18
+ceres seed=1 parking-garage.g2o huber 1 ceres-point out=0 sum_rho=1.248962220742e0 grad_rel=6.152e-6 iterations=24 time=0.180 CONVERGENCE
+old seed=1 parking-garage.g2o huber 1 lm default out=0.05 edges=6590 sum_rho0=6.209798673e4 sum_rho=8.945115866823e3 grad_rel=7.176e-2 time=7.216 solves=100
+new seed=1 parking-garage.g2o huber 1 lm default out=0.05 edges=6590 sum_rho0=6.209798673e4 sum_rho=8.747363755230e3 grad_rel=3.854e-2 time=6.271 solves=90
+ceres seed=1 parking-garage.g2o huber 1 ceres-point out=0.05 sum_rho=8.778569932740e3 grad_rel=8.008e-2 iterations=101 time=1.560 NO_CONVERGENCE
+old seed=2 parking-garage.g2o huber 1 lm default out=0.05 edges=6590 sum_rho0=6.361384866e4 sum_rho=8.567173299413e3 grad_rel=2.715e-2 time=7.404 solves=100
+new seed=2 parking-garage.g2o huber 1 lm default out=0.05 edges=6590 sum_rho0=6.361384866e4 sum_rho=8.283325253440e3 grad_rel=2.227e-2 time=5.718 solves=100
+ceres seed=2 parking-garage.g2o huber 1 ceres-point out=0.05 sum_rho=8.310482521342e3 grad_rel=2.784e-2 iterations=101 time=1.277 NO_CONVERGENCE
+old seed=3 parking-garage.g2o huber 1 lm default out=0.05 edges=6590 sum_rho0=5.840619585e4 sum_rho=8.882760008635e3 grad_rel=3.530e-2 time=5.728 solves=100
+new seed=3 parking-garage.g2o huber 1 lm default out=0.05 edges=6590 sum_rho0=5.840619585e4 sum_rho=8.847451062438e3 grad_rel=6.191e-2 time=6.326 solves=100
+ceres seed=3 parking-garage.g2o huber 1 ceres-point out=0.05 sum_rho=8.827779771419e3 grad_rel=3.452e-2 iterations=101 time=1.350 NO_CONVERGENCE
+old seed=1 parking-garage.g2o huber 1 lm default out=0.1 edges=6904 sum_rho0=1.140291817e5 sum_rho=1.380421043600e4 grad_rel=5.900e-2 time=23.575 solves=100
+new seed=1 parking-garage.g2o huber 1 lm default out=0.1 edges=6904 sum_rho0=1.140291817e5 sum_rho=1.338202590794e4 grad_rel=5.274e-2 time=7.780 solves=97
+ceres seed=1 parking-garage.g2o huber 1 ceres-point out=0.1 sum_rho=1.353095331258e4 grad_rel=6.472e-2 iterations=101 time=2.634 NO_CONVERGENCE
+old seed=1 parking-garage.g2o cauchy 1 lm default out=0 edges=6276 sum_rho0=4.191015399e3 sum_rho=1.248005658271e0 grad_rel=1.918e-5 time=0.508 solves=12
+new seed=1 parking-garage.g2o cauchy 1 lm default out=0 edges=6276 sum_rho0=4.191015399e3 sum_rho=1.247891829100e0 grad_rel=2.981e-5 time=0.710 solves=18
+ceres seed=1 parking-garage.g2o cauchy 1 ceres-point out=0 sum_rho=1.247863914320e0 grad_rel=1.241e-5 iterations=24 time=0.173 CONVERGENCE
+old seed=1 parking-garage.g2o cauchy 1 lm default out=0.05 edges=6590 sum_rho0=6.837277275e3 sum_rho=2.555920337521e3 grad_rel=4.108e-3 time=1.032 solves=17
+new seed=1 parking-garage.g2o cauchy 1 lm default out=0.05 edges=6590 sum_rho0=6.837277275e3 sum_rho=2.248151919597e3 grad_rel=5.302e-2 time=5.949 solves=100
+ceres seed=1 parking-garage.g2o cauchy 1 ceres-point out=0.05 sum_rho=2.239961685599e3 grad_rel=1.739e-2 iterations=101 time=1.278 NO_CONVERGENCE
+old seed=2 parking-garage.g2o cauchy 1 lm default out=0.05 edges=6590 sum_rho0=6.865608522e3 sum_rho=2.610790698646e3 grad_rel=2.911e-3 time=1.545 solves=28
+new seed=2 parking-garage.g2o cauchy 1 lm default out=0.05 edges=6590 sum_rho0=6.865608522e3 sum_rho=2.310440150172e3 grad_rel=3.224e-2 time=9.375 solves=100
+ceres seed=2 parking-garage.g2o cauchy 1 ceres-point out=0.05 sum_rho=2.300366923010e3 grad_rel=1.264e-2 iterations=101 time=1.280 NO_CONVERGENCE
+old seed=3 parking-garage.g2o cauchy 1 lm default out=0.05 edges=6590 sum_rho0=6.797990060e3 sum_rho=2.538842294183e3 grad_rel=5.571e-3 time=1.343 solves=22
+new seed=3 parking-garage.g2o cauchy 1 lm default out=0.05 edges=6590 sum_rho0=6.797990060e3 sum_rho=2.314164534645e3 grad_rel=6.370e-2 time=6.114 solves=100
+ceres seed=3 parking-garage.g2o cauchy 1 ceres-point out=0.05 sum_rho=2.338585404083e3 grad_rel=1.496e-2 iterations=101 time=1.254 NO_CONVERGENCE
+old seed=1 parking-garage.g2o cauchy 1 lm default out=0.1 edges=6904 sum_rho0=9.456192150e3 sum_rho=5.062571296376e3 grad_rel=3.617e-3 time=2.204 solves=28
+new seed=1 parking-garage.g2o cauchy 1 lm default out=0.1 edges=6904 sum_rho0=9.456192150e3 sum_rho=4.142941652316e3 grad_rel=1.931e-2 time=8.284 solves=100
+ceres seed=1 parking-garage.g2o cauchy 1 ceres-point out=0.1 sum_rho=4.140405454836e3 grad_rel=1.109e-2 iterations=101 time=2.482 NO_CONVERGENCE

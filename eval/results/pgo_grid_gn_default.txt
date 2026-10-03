@@ -1,0 +1,24 @@
+old seed=1 input_M3500_g2o.g2o huber 1 gn default out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836224700e0 grad_rel=3.214e-7 time=0.080 solves=0
+new seed=1 input_M3500_g2o.g2o huber 1 gn default out=0 edges=5454 sum_rho0=8.615445134e3 sum_rho=3.021836224700e0 grad_rel=3.214e-7 time=0.067 solves=0
+old seed=1 input_M3500_g2o.g2o huber 1 gn default out=0.05 edges=5727 sum_rho0=2.714224622e4 sum_rho=1.737333209011e3 grad_rel=1.358e-1 time=1.811 solves=0
+new seed=1 input_M3500_g2o.g2o huber 1 gn default out=0.05 edges=5727 sum_rho0=2.714224622e4 sum_rho=1.736590420694e3 grad_rel=1.400e-1 time=0.775 solves=0
+old seed=1 input_M3500_g2o.g2o cauchy 1 gn default out=0 edges=5454 sum_rho0=2.500904628e3 sum_rho=3.020165893759e0 grad_rel=3.640e-7 time=0.077 solves=0
+new seed=1 input_M3500_g2o.g2o cauchy 1 gn default out=0 edges=5454 sum_rho0=2.500904628e3 sum_rho=3.020165893759e0 grad_rel=3.640e-7 time=0.072 solves=0
+old seed=1 input_M3500_g2o.g2o cauchy 1 gn default out=0.05 edges=5727 sum_rho0=4.341726173e3 sum_rho=1.004456598588e3 grad_rel=1.262e-1 time=1.201 solves=0
+new seed=1 input_M3500_g2o.g2o cauchy 1 gn default out=0.05 edges=5727 sum_rho0=4.341726173e3 sum_rho=9.959379989093e2 grad_rel=2.430e-2 time=1.852 solves=0
+old seed=1 sphere2500.g2o huber 1 gn default out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257501545751e1 grad_rel=6.600e-5 time=0.419 solves=0
+new seed=1 sphere2500.g2o huber 1 gn default out=0 edges=4950 sum_rho0=4.061471102e4 sum_rho=4.257501545751e1 grad_rel=6.600e-5 time=0.407 solves=0
+old seed=1 sphere2500.g2o huber 1 gn default out=0.05 edges=5197 sum_rho0=7.317157959e4 sum_rho=6.318604965642e3 grad_rel=1.919e0 time=7.380 solves=0
+new seed=1 sphere2500.g2o huber 1 gn default out=0.05 edges=5197 sum_rho0=7.317157959e4 sum_rho=6.318604965642e3 grad_rel=1.919e0 time=7.488 solves=0
+old seed=1 sphere2500.g2o cauchy 1 gn default out=0 edges=4950 sum_rho0=9.828170199e3 sum_rho=4.228335713968e1 grad_rel=7.954e-4 time=0.377 solves=0
+new seed=1 sphere2500.g2o cauchy 1 gn default out=0 edges=4950 sum_rho0=9.828170199e3 sum_rho=4.228335713968e1 grad_rel=7.954e-4 time=0.362 solves=0
+old seed=1 sphere2500.g2o cauchy 1 gn default out=0.05 edges=5197 sum_rho0=1.182797870e4 sum_rho=2.032923407590e3 grad_rel=1.245e-4 time=5.771 solves=0
+new seed=1 sphere2500.g2o cauchy 1 gn default out=0.05 edges=5197 sum_rho0=1.182797870e4 sum_rho=2.032989471217e3 grad_rel=1.422e-2 time=0.869 solves=0
+old seed=1 parking-garage.g2o huber 1 gn default out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248960073512e0 grad_rel=1.443e-7 time=0.167 solves=0
+new seed=1 parking-garage.g2o huber 1 gn default out=0 edges=6276 sum_rho0=8.355312932e3 sum_rho=1.248960073512e0 grad_rel=1.443e-7 time=0.160 solves=0
+old seed=1 parking-garage.g2o huber 1 gn default out=0.05 edges=6590 sum_rho0=6.209798673e4 FAILED solves=0
+new seed=1 parking-garage.g2o huber 1 gn default out=0.05 edges=6590 sum_rho0=6.209798673e4 FAILED solves=0
+old seed=1 parking-garage.g2o cauchy 1 gn default out=0 edges=6276 sum_rho0=4.191015399e3 sum_rho=1.247861773335e0 grad_rel=4.597e-7 time=0.200 solves=0
+new seed=1 parking-garage.g2o cauchy 1 gn default out=0 edges=6276 sum_rho0=4.191015399e3 sum_rho=1.247861773335e0 grad_rel=4.597e-7 time=0.183 solves=0
+old seed=1 parking-garage.g2o cauchy 1 gn default out=0.05 edges=6590 sum_rho0=6.837277275e3 sum_rho=2.658120891268e3 grad_rel=5.265e-1 time=10.483 solves=0
+new seed=1 parking-garage.g2o cauchy 1 gn default out=0.05 edges=6590 sum_rho0=6.837277275e3 sum_rho=2.658120891268e3 grad_rel=5.265e-1 time=5.549 solves=0
