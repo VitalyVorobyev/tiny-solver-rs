@@ -11,7 +11,18 @@ pub trait AutoDiffManifold<T: na::RealField> {
     fn minus(&self, y: na::DVectorView<T>, x: na::DVectorView<T>) -> na::DVector<T>;
 }
 
-pub trait Manifold: AutoDiffManifold<f64> + AutoDiffManifold<num_dual::DualDVec64> {
+pub trait Manifold:
+    AutoDiffManifold<f64>
+    + AutoDiffManifold<num_dual::DualDVec64>
+    + AutoDiffManifold<crate::factors::DualStride>
+{
+    fn plus_stride(
+        &self,
+        x: na::DVectorView<crate::factors::DualStride>,
+        delta: na::DVectorView<crate::factors::DualStride>,
+    ) -> na::DVector<crate::factors::DualStride> {
+        self.plus(x, delta)
+    }
     fn tangent_size(&self) -> NonZero<usize>;
     fn plus_f64(&self, x: na::DVectorView<f64>, delta: na::DVectorView<f64>) -> na::DVector<f64> {
         self.plus(x, delta)

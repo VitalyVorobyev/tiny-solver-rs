@@ -56,6 +56,17 @@ impl ParameterBlock {
         }
         new_param
     }
+    pub fn plus_stride(
+        &self,
+        dx: na::DVectorView<crate::factors::DualStride>,
+    ) -> na::DVector<crate::factors::DualStride> {
+        let x = self.params.map(crate::factors::DualStride::from_re);
+        if let Some(m) = &self.manifold {
+            m.plus_stride(x.as_view(), dx)
+        } else {
+            x + dx
+        }
+    }
     pub fn y_minus_f64(&self, y: na::DVectorView<f64>) -> na::DVector<f64> {
         let mut delta_x = na::DVector::zeros(self.tangent_size());
         if let Some(m) = &self.manifold {
