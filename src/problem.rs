@@ -1,5 +1,5 @@
 use std::collections::{BTreeMap, HashMap, HashSet};
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
 use faer::sparse::{Argsort, Pair, SparseColMat, SymbolicSparseColMat};
 use faer_ext::IntoFaer;
@@ -248,23 +248,25 @@ impl Problem {
         parameter_blocks: &HashMap<String, ParameterBlock>,
         with_loss_fn: bool,
     ) -> faer::Mat<f64> {
-        let total_residual = Arc::new(Mutex::new(na::DVector::<f64>::zeros(
-            self.total_residual_dimension,
-        )));
-        self.residual_blocks
+        // Each block returns its residual; they are copied into place
+        // sequentially, without a lock.
+        let per_block: Vec<na::DVector<f64>> = self
+            .residual_blocks
             .par_iter()
-            .for_each(|(_, residual_block)| {
-                self.compute_residual_impl(
-                    residual_block,
-                    parameter_blocks,
-                    &total_residual,
-                    with_loss_fn,
+            .map(|(_, residual_block)| {
+                self.compute_residual_impl(residual_block, parameter_blocks, with_loss_fn)
+            })
+            .collect();
+
+        let mut total_residual = na::DVector::<f64>::zeros(self.total_residual_dimension);
+        for ((_, residual_block), res) in self.residual_blocks.iter().zip(&per_block) {
+            total_residual
+                .rows_mut(
+                    residual_block.residual_row_start_idx,
+                    residual_block.dim_residual,
                 )
-            });
-        let total_residual = Arc::try_unwrap(total_residual)
-            .unwrap()
-            .into_inner()
-            .unwrap();
+                .copy_from(res);
+        }
 
         total_residual.view_range(.., ..).into_faer().to_owned()
     }
@@ -295,12 +297,9 @@ impl Problem {
         variable_name_to_col_idx_dict: &HashMap<String, usize>,
         symbolic_structure: &SymbolicStructure,
     ) -> (faer::Mat<f64>, SparseColMat<usize, f64>) {
-        // multi
-        let total_residual = Arc::new(Mutex::new(na::DVector::<f64>::zeros(
-            self.total_residual_dimension,
-        )));
-
-        let jacobian_lists: Vec<JacobianValue> = self
+        // Each block returns its residual and Jacobian values; they are copied
+        // into place sequentially, without a lock.
+        let per_block: Vec<(na::DVector<f64>, Vec<JacobianValue>)> = self
             .residual_blocks
             .par_iter()
             .map(|(_, residual_block)| {
@@ -308,16 +307,21 @@ impl Problem {
                     residual_block,
                     parameter_blocks,
                     variable_name_to_col_idx_dict,
-                    &total_residual,
                 )
             })
-            .flatten()
             .collect();
-
-        let total_residual = Arc::try_unwrap(total_residual)
-            .unwrap()
-            .into_inner()
-            .unwrap();
+        let mut total_residual = na::DVector::<f64>::zeros(self.total_residual_dimension);
+        let mut jacobian_lists: Vec<JacobianValue> =
+            Vec::with_capacity(per_block.iter().map(|(_, j)| j.len()).sum());
+        for ((_, residual_block), (res, jac)) in self.residual_blocks.iter().zip(&per_block) {
+            total_residual
+                .rows_mut(
+                    residual_block.residual_row_start_idx,
+                    residual_block.dim_residual,
+                )
+                .copy_from(res);
+            jacobian_lists.extend_from_slice(jac);
+        }
 
         let residual_faer = total_residual.view_range(.., ..).into_faer().to_owned();
         let jacobian_faer = SparseColMat::new_from_argsort(
@@ -333,26 +337,15 @@ impl Problem {
         &self,
         residual_block: &crate::ResidualBlock,
         parameter_blocks: &HashMap<String, ParameterBlock>,
-        total_residual: &Arc<Mutex<na::DVector<f64>>>,
         with_loss_fn: bool,
-    ) {
+    ) -> na::DVector<f64> {
         let mut params = Vec::new();
         for var_key in &residual_block.variable_key_list {
             if let Some(param) = parameter_blocks.get(var_key) {
                 params.push(param);
             };
         }
-        let res = residual_block.residual(&params, with_loss_fn);
-
-        {
-            let mut total_residual = total_residual.lock().unwrap();
-            total_residual
-                .rows_mut(
-                    residual_block.residual_row_start_idx,
-                    residual_block.dim_residual,
-                )
-                .copy_from(&res);
-        }
+        residual_block.residual(&params, with_loss_fn)
     }
 
     fn compute_residual_and_jacobian_impl(
@@ -360,8 +353,7 @@ impl Problem {
         residual_block: &crate::ResidualBlock,
         parameter_blocks: &HashMap<String, ParameterBlock>,
         variable_name_to_col_idx_dict: &HashMap<String, usize>,
-        total_residual: &Arc<Mutex<na::DVector<f64>>>,
-    ) -> Vec<JacobianValue> {
+    ) -> (na::DVector<f64>, Vec<JacobianValue>) {
         let mut params = Vec::new();
         let mut variable_local_idx_size_list = Vec::<(usize, usize)>::new();
         let mut count_variable_local_idx: usize = 0;
@@ -373,15 +365,6 @@ impl Problem {
             };
         }
         let (res, jac) = residual_block.residual_and_jacobian(&params);
-        {
-            let mut total_residual = total_residual.lock().unwrap();
-            total_residual
-                .rows_mut(
-                    residual_block.residual_row_start_idx,
-                    residual_block.dim_residual,
-                )
-                .copy_from(&res);
-        }
 
         let mut local_jacobian_list = Vec::new();
 
@@ -418,6 +401,6 @@ impl Problem {
             }
         }
 
-        local_jacobian_list
+        (res, local_jacobian_list)
     }
 }
