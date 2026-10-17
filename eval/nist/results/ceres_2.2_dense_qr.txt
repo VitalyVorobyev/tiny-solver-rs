@@ -1,0 +1,93 @@
+E20261017 10:54:00.560070 0x1f537a180 program_evaluator.h:286] Accumulated cost = inf is not a finite number. Evaluation failed.
+E20261017 10:54:00.560547 0x1f537a180 program_evaluator.h:286] Accumulated cost = inf is not a finite number. Evaluation failed.
+Lower Difficulty
+Misra1a.dat
+start: 1 status: SUCCESS lre: 10.1 initial cost: 5.390095e+03 final cost:6.227569e-02 certified cost: 6.227569e-02
+start: 2 status: SUCCESS lre:  8.7 initial cost: 2.238564e+01 final cost:6.227569e-02 certified cost: 6.227569e-02
+Chwirut1.dat
+start: 1 status: SUCCESS lre:  8.5 initial cost: 2.503432e+04 final cost:1.192239e+03 certified cost: 1.192239e+03
+start: 2 status: SUCCESS lre:  8.5 initial cost: 2.287854e+03 final cost:1.192239e+03 certified cost: 1.192239e+03
+Chwirut2.dat
+start: 1 status: SUCCESS lre:  8.5 initial cost: 7.397395e+03 final cost:2.565240e+02 certified cost: 2.565240e+02
+start: 2 status: SUCCESS lre:  8.6 initial cost: 7.434794e+02 final cost:2.565240e+02 certified cost: 2.565240e+02
+Lanczos3.dat
+start: 1 status: SUCCESS lre: 10.5 initial cost: 1.348757e+02 final cost:8.058597e-09 certified cost: 8.058597e-09
+start: 2 status: SUCCESS lre:  9.2 initial cost: 3.939461e+01 final cost:8.058597e-09 certified cost: 8.058597e-09
+Gauss1.dat
+start: 1 status: SUCCESS lre: 10.6 initial cost: 3.685860e+03 final cost:6.579111e+02 certified cost: 6.579111e+02
+start: 2 status: SUCCESS lre:  8.6 initial cost: 6.040846e+03 final cost:6.579111e+02 certified cost: 6.579111e+02
+Gauss2.dat
+start: 1 status: SUCCESS lre: 10.0 initial cost: 4.579070e+03 final cost:6.237641e+02 certified cost: 6.237641e+02
+start: 2 status: SUCCESS lre:  9.9 initial cost: 2.341565e+03 final cost:6.237641e+02 certified cost: 6.237641e+02
+DanWood.dat
+start: 1 status: SUCCESS lre: 10.0 initial cost: 7.485961e+01 final cost:2.158654e-03 certified cost: 2.158654e-03
+start: 2 status: SUCCESS lre: 11.0 initial cost: 5.188235e-02 final cost:2.158654e-03 certified cost: 2.158654e-03
+Misra1b.dat
+start: 1 status: SUCCESS lre: 10.3 initial cost: 5.497159e+03 final cost:3.773234e-02 certified cost: 3.773234e-02
+start: 2 status: SUCCESS lre: 10.2 initial cost: 4.327346e+03 final cost:3.773234e-02 certified cost: 3.773234e-02
+
+Medium Difficulty
+Kirby2.dat
+start: 1 status: SUCCESS lre:  9.3 initial cost: 1.866427e+05 final cost:1.952537e+00 certified cost: 1.952537e+00
+start: 2 status: SUCCESS lre: 10.7 initial cost: 4.938605e+02 final cost:1.952537e+00 certified cost: 1.952537e+00
+Hahn1.dat
+start: 1 status: SUCCESS lre:  7.9 initial cost: 1.548778e+06 final cost:7.662191e-01 certified cost: 7.662191e-01
+start: 2 status: SUCCESS lre:  8.6 initial cost: 1.046724e+06 final cost:7.662191e-01 certified cost: 7.662191e-01
+Nelson.dat
+start: 1 status: SUCCESS lre:  7.3 initial cost: 3.154177e+01 final cost:1.898842e+00 certified cost: 1.898842e+00
+start: 2 status: SUCCESS lre:  7.5 initial cost: 2.424496e+01 final cost:1.898842e+00 certified cost: 1.898842e+00
+MGH17.dat
+start: 1 status: SUCCESS lre:  7.8 initial cost: 4.392443e+04 final cost:2.732447e-05 certified cost: 2.732447e-05
+start: 2 status: SUCCESS lre:  9.6 initial cost: 4.395131e-01 final cost:2.732447e-05 certified cost: 2.732447e-05
+Lanczos1.dat
+start: 1 status: SUCCESS lre: 10.6 initial cost: 1.348752e+02 final cost:7.139285e-26 certified cost: 7.153934e-26
+start: 2 status: SUCCESS lre: 10.6 initial cost: 3.939431e+01 final cost:7.142622e-26 certified cost: 7.153934e-26
+Lanczos2.dat
+start: 1 status: SUCCESS lre:  7.2 initial cost: 1.348752e+02 final cost:1.114971e-11 certified cost: 1.114971e-11
+start: 2 status: SUCCESS lre:  7.4 initial cost: 3.939434e+01 final cost:1.114971e-11 certified cost: 1.114971e-11
+Gauss3.dat
+start: 1 status: SUCCESS lre:  8.7 initial cost: 9.452568e+03 final cost:6.222423e+02 certified cost: 6.222423e+02
+start: 2 status: SUCCESS lre:  9.2 initial cost: 6.999460e+03 final cost:6.222423e+02 certified cost: 6.222423e+02
+Misra1c.dat
+start: 1 status: SUCCESS lre: 10.7 initial cost: 5.801508e+03 final cost:2.048342e-02 certified cost: 2.048342e-02
+start: 2 status: SUCCESS lre: 10.2 initial cost: 1.312283e+02 final cost:2.048342e-02 certified cost: 2.048342e-02
+Misra1d.dat
+start: 1 status: SUCCESS lre:  8.7 initial cost: 5.601328e+03 final cost:2.820965e-02 certified cost: 2.820965e-02
+start: 2 status: SUCCESS lre: 10.7 initial cost: 8.195109e+00 final cost:2.820965e-02 certified cost: 2.820965e-02
+Roszman1.dat
+start: 1 status: SUCCESS lre:  8.4 initial cost: 1.632464e+01 final cost:2.474242e-04 certified cost: 2.474242e-04
+start: 2 status: SUCCESS lre:  7.4 initial cost: 1.259393e+01 final cost:2.474242e-04 certified cost: 2.474242e-04
+ENSO.dat
+start: 1 status: SUCCESS lre:  6.6 initial cost: 5.769720e+02 final cost:3.942699e+02 certified cost: 3.942699e+02
+start: 2 status: SUCCESS lre:  6.5 initial cost: 4.574878e+02 final cost:3.942699e+02 certified cost: 3.942699e+02
+
+Higher Difficulty
+MGH09.dat
+start: 1 status: SUCCESS lre:  7.5 initial cost: 4.487727e+02 final cost:1.537528e-04 certified cost: 1.537528e-04
+start: 2 status: SUCCESS lre:  7.1 initial cost: 2.656586e-03 final cost:1.537528e-04 certified cost: 1.537528e-04
+Thurber.dat
+start: 1 status: SUCCESS lre:  8.6 initial cost: 2.264062e+06 final cost:2.821354e+03 certified cost: 2.821354e+03
+start: 2 status: SUCCESS lre:  7.7 initial cost: 4.293687e+07 final cost:2.821354e+03 certified cost: 2.821354e+03
+BoxBOD.dat
+start: 1 status: FAILURE lre:  0.0 initial cost: 9.319119e+04 final cost:4.885750e+03 certified cost: 5.840044e+02
+start: 2 status: SUCCESS lre:  8.5 initial cost: 2.439263e+04 final cost:5.840044e+02 certified cost: 5.840044e+02
+Rat42.dat
+start: 1 status: SUCCESS lre: 11.0 initial cost: 9.957926e+03 final cost:4.028261e+00 certified cost: 4.028261e+00
+start: 2 status: SUCCESS lre:  8.4 initial cost: 7.638101e+01 final cost:4.028261e+00 certified cost: 4.028261e+00
+MGH10.dat
+start: 1 status: SUCCESS lre:  9.8 initial cost: 2.257621e+15 final cost:4.397293e+01 certified cost: 4.397293e+01
+start: 2 status: SUCCESS lre: 10.6 initial cost: 8.468039e+08 final cost:4.397293e+01 certified cost: 4.397293e+01
+Eckerle4.dat
+start: 1 status: SUCCESS lre: 10.6 initial cost: 3.611513e-01 final cost:7.317944e-04 certified cost: 7.317944e-04
+start: 2 status: SUCCESS lre: 10.6 initial cost: 2.834145e-02 final cost:7.317944e-04 certified cost: 7.317944e-04
+Rat43.dat
+start: 1 status: SUCCESS lre:  9.3 initial cost: 1.533154e+06 final cost:4.393202e+03 certified cost: 4.393202e+03
+start: 2 status: SUCCESS lre:  9.2 initial cost: 7.327607e+03 final cost:4.393202e+03 certified cost: 4.393202e+03
+Bennett5.dat
+start: 1 status: SUCCESS lre: 10.6 initial cost: 3.301122e+04 final cost:2.620237e-04 certified cost: 2.620237e-04
+start: 2 status: SUCCESS lre:  9.5 initial cost: 2.863055e+04 final cost:2.620237e-04 certified cost: 2.620237e-04
+
+Easy    : 16/16
+Medium  : 22/22
+Hard    : 15/16
+Total   : 53/54
